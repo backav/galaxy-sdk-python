@@ -62,8 +62,8 @@ while True:
   time.sleep(5)
   cluster_detail = emr_client.describeCluster(create_cluster_resp_full_args.clusterId)
   if cluster_detail.clusterStatus.state == StateCode.C_RUNNING:
-    print "Cluster is running."
-    print "cluster detail:\n" + str(cluster_detail)
+    print("Cluster is running.")
+    print("cluster detail:\n" + str(cluster_detail))
     break
   if time.time() - polling_start_time > create_cluster_timeout:
     raise Exception("Create cluster error: polling exceeded max timeout")
@@ -72,54 +72,54 @@ while True:
 cluster_detail = emr_client.describeCluster(
   create_cluster_resp_full_args.clusterId)
 if cluster_detail:
-  print "cluster detail:\n" + str(cluster_detail)
+  print("cluster detail:\n" + str(cluster_detail))
 else:
-  print "cluster detail response is None"
+  print("cluster detail response is None")
 
 # ---------------------- list clusters --------------------------------------
 time_stop = time.time()
 time_start = time_stop - 10 * 3600 # from ten minutes ago
 list_clusters = emr_client.listClusters(time_start, time_stop)
 if list_clusters:
-  print "list_clusters:\n" + str(list_clusters)
+  print("list_clusters:\n" + str(list_clusters))
 else:
-  print "list_clusters response is None"
+  print("list_clusters response is None")
 # ----------------------- describe instanceGroup ----------------------------
 instance_group_detail = emr_client.describeInstanceGroup(
   create_cluster_resp_full_args.addInstanceGroupResponses[0].instanceGroupId)
 if instance_group_detail:
-  print "instanceGroup detail:\n" + str(instance_group_detail)
+  print("instanceGroup detail:\n" + str(instance_group_detail))
 else:
-  print "instanceGroup detail response is None"
+  print("instanceGroup detail response is None")
 # ----------------------- list instanceGroups --------------------------------
 list_instanceGroups = emr_client.listInstanceGroups(
   create_cluster_resp_full_args.clusterId)
 if list_instanceGroups:
-  print "list_instanceGroups:\n" + str(list_instanceGroups)
+  print("list_instanceGroups:\n" + str(list_instanceGroups))
 else:
-  print "list_instanceGroups response is None"
+  print("list_instanceGroups response is None")
 # ------------------------ list instances in cluster -------------------------
 list_instances_in_cluster = emr_client.listInstancesInCluster(
   create_cluster_resp_full_args.clusterId)
 if list_instances_in_cluster:
-  print "list_instances_in_cluster\n" + str(list_instances_in_cluster)
+  print("list_instances_in_cluster\n" + str(list_instances_in_cluster))
 else:
-  print "list_instances_in_cluster response is None"
+  print("list_instances_in_cluster response is None")
 # -----------------------list instances in instanceGroup --------------------
 list_instances_in_group = emr_client.listInstancesInGroup(
   create_cluster_resp_full_args.clusterId,
   create_cluster_resp_full_args.addInstanceGroupResponses[0].instanceGroupId,
   InstanceGroupRole.MASTER)
 if list_instances_in_group:
-  print "list_instance_in_group\n" + str(list_instances_in_group)
+  print("list_instance_in_group\n" + str(list_instances_in_group))
 else:
-  print "list_instances_in_cluster response is None"
+  print("list_instances_in_cluster response is None")
 
 # ----------------------- terminate cluster ----------------------------------
 # Note: terminate cluste also take several minutes, usually 3-4 minutes
 terminate_cluster_req = TerminateClusterRequest(create_cluster_resp_full_args.clusterId)
 terminate_cluster_resp = emr_client.terminateCluster(terminate_cluster_req)
 if terminate_cluster_resp:
-  print "terminate cluster response:" + terminate_cluster_resp
+  print("terminate cluster response:" + terminate_cluster_resp)
 else:
-  print "terminate cluster response is None"
+  print("terminate cluster response is None")

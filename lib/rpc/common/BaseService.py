@@ -8,7 +8,7 @@
 #
 
 from thrift.Thrift import TType, TMessageType, TException, TApplicationException
-from ttypes import *
+from .ttypes import *
 from thrift.Thrift import TProcessor
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol, TProtocol
@@ -178,7 +178,7 @@ class Processor(Iface, TProcessor):
     result = getServerVersion_result()
     try:
       result.success = self._handler.getServerVersion()
-    except rpc.errors.ttypes.ServiceException, se:
+    except rpc.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("getServerVersion", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -192,7 +192,7 @@ class Processor(Iface, TProcessor):
     result = validateClientVersion_result()
     try:
       self._handler.validateClientVersion(args.clientVersion)
-    except rpc.errors.ttypes.ServiceException, se:
+    except rpc.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("validateClientVersion", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -250,7 +250,7 @@ class getServerVersion_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -329,7 +329,7 @@ class getServerVersion_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -395,7 +395,7 @@ class validateClientVersion_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -461,7 +461,7 @@ class validateClientVersion_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -507,7 +507,7 @@ class getServerTime_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -571,7 +571,7 @@ class getServerTime_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

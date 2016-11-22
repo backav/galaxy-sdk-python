@@ -1,7 +1,7 @@
 # encoding: utf-8
 #
 import base64
-import httplib
+import http.client
 import os
 import rfc822
 import socket
@@ -9,15 +9,15 @@ import sys
 import time
 import hashlib
 import hmac
-from cStringIO import StringIO
-import urllib
+from io import StringIO
+import urllib.request, urllib.parse, urllib.error
 from emq.client.constants import CONTENT_LENGTH, CONTENT_TYPE, USER_AGENT, HOST, TIMESTAMP, CONTENT_MD5, MI_DATE, \
   XIAOMI_HEADER_PREFIX, AUTHORIZATION, SubResource
 from emq.common.ttypes import GalaxyEmqServiceException
 from rpc.common.constants import THRIFT_HEADER_MAP
 from rpc.common.ttypes import ThriftProtocol
 from rpc.errors.ttypes import HttpStatusCode
-from urlparse import urlparse
+from urllib.parse import urlparse
 from hashlib import sha1
 
 from thrift.transport.TTransport import TTransportBase
@@ -32,9 +32,9 @@ class THttpClient(TTransportBase):
     self.scheme = parsed.scheme
     assert self.scheme in ('http', 'https')
     if self.scheme == 'http':
-      self.port = parsed.port or httplib.HTTP_PORT
+      self.port = parsed.port or http.client.HTTP_PORT
     elif self.scheme == 'https':
-      self.port = parsed.port or httplib.HTTPS_PORT
+      self.port = parsed.port or http.client.HTTPS_PORT
     self.host = parsed.hostname
     self.path = parsed.path
     if parsed.query:
@@ -48,9 +48,9 @@ class THttpClient(TTransportBase):
 
   def open(self):
     if self.scheme == 'http':
-      self.__http = httplib.HTTP(self.host, self.port)
+      self.__http = http.client.HTTP(self.host, self.port)
     else:
-      self.__http = httplib.HTTPS(self.host, self.port)
+      self.__http = http.client.HTTPS(self.host, self.port)
 
   def close(self):
     self.__http.close()
@@ -107,10 +107,10 @@ class THttpClient(TTransportBase):
       user_agent = default_user_agent
       script = os.path.basename(sys.argv[0])
       if script:
-        user_agent = '%s (%s)' % (user_agent, urllib.quote(script))
+        user_agent = '%s (%s)' % (user_agent, urllib.parse.quote(script))
       self.__http.putheader(USER_AGENT, user_agent)
 
-    for key, val in self.__auth_headers(dict(headers.items() + self.__custom_headers.items())).iteritems():
+    for key, val in self.__auth_headers(dict(list(headers.items()) + list(self.__custom_headers.items()))).items():
       self.__http.putheader(key, val)
 
     self.__http.endheaders()

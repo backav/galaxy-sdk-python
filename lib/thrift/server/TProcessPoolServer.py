@@ -19,11 +19,12 @@
 
 
 import logging
+import collections
 logger = logging.getLogger(__name__)
 
 from multiprocessing import  Process, Value, Condition, reduction
 
-from TServer import TServer
+from .TServer import TServer
 from thrift.transport.TTransport import TTransportException
 
 
@@ -42,7 +43,7 @@ class TProcessPoolServer(TServer):
         self.postForkCallback = None
 
     def setPostForkCallback(self, callback):
-        if not callable(callback):
+        if not isinstance(callback, collections.Callable):
             raise TypeError("This is not a callback!")
         self.postForkCallback = callback
 
@@ -63,7 +64,7 @@ class TProcessPoolServer(TServer):
                 self.serveClient(client)
             except (KeyboardInterrupt, SystemExit):
                 return 0
-            except Exception, x:
+            except Exception as x:
                 logger.exception(x)
 
     def serveClient(self, client):
@@ -76,9 +77,9 @@ class TProcessPoolServer(TServer):
         try:
             while True:
                 self.processor.process(iprot, oprot)
-        except TTransportException, tx:
+        except TTransportException as tx:
             pass
-        except Exception, x:
+        except Exception as x:
             logger.exception(x)
 
         itrans.close()
@@ -99,7 +100,7 @@ class TProcessPoolServer(TServer):
                 w.daemon = True
                 w.start()
                 self.workers.append(w)
-            except Exception, x:
+            except Exception as x:
                 logger.exception(x)
 
         # wait until the condition is set by stop()
@@ -110,7 +111,7 @@ class TProcessPoolServer(TServer):
                 break
             except (SystemExit, KeyboardInterrupt):
                 break
-            except Exception, x:
+            except Exception as x:
                 logger.exception(x)
 
         self.isRunning.value = False

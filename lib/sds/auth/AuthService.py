@@ -9,7 +9,7 @@
 
 from thrift.Thrift import TType, TMessageType, TException, TApplicationException
 import sds.common.BaseService
-from ttypes import *
+from .ttypes import *
 from thrift.Thrift import TProcessor
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol, TProtocol
@@ -103,7 +103,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = createCredential_result()
     try:
       result.success = self._handler.createCredential(args.oauthInfo)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("createCredential", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -170,7 +170,7 @@ class createCredential_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -249,7 +249,7 @@ class createCredential_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

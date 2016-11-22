@@ -378,7 +378,7 @@ class Client(Iface):
       self._iprot.readMessageEnd()
       raise x
     result = describeCluster_result()
-    print result
+    print(result)
     result.read(self._iprot)
     self._iprot.readMessageEnd()
     if result.success is not None:
@@ -903,7 +903,7 @@ class createCluster_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -963,7 +963,7 @@ class createCluster_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1024,7 +1024,7 @@ class addInstanceGroup_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1084,7 +1084,7 @@ class addInstanceGroup_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1120,7 +1120,7 @@ class addInstanceGroups_args:
         if ftype == TType.LIST:
           self.instanceGroups = []
           (_etype91, _size88) = iprot.readListBegin()
-          for _i92 in xrange(_size88):
+          for _i92 in range(_size88):
             _elem93 = AddInstanceGroupRequest()
             _elem93.read(iprot)
             self.instanceGroups.append(_elem93)
@@ -1153,7 +1153,7 @@ class addInstanceGroups_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1188,7 +1188,7 @@ class addInstanceGroups_result:
         if ftype == TType.LIST:
           self.success = []
           (_etype98, _size95) = iprot.readListBegin()
-          for _i99 in xrange(_size95):
+          for _i99 in range(_size95):
             _elem100 = AddInstanceGroupResponse()
             _elem100.read(iprot)
             self.success.append(_elem100)
@@ -1221,7 +1221,7 @@ class addInstanceGroups_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1282,7 +1282,7 @@ class submitJob_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1342,7 +1342,7 @@ class submitJob_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1378,7 +1378,7 @@ class submitJobs_args:
         if ftype == TType.LIST:
           self.jobs = []
           (_etype105, _size102) = iprot.readListBegin()
-          for _i106 in xrange(_size102):
+          for _i106 in range(_size102):
             _elem107 = SubmitJobRequest()
             _elem107.read(iprot)
             self.jobs.append(_elem107)
@@ -1411,7 +1411,7 @@ class submitJobs_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1446,7 +1446,7 @@ class submitJobs_result:
         if ftype == TType.LIST:
           self.success = []
           (_etype112, _size109) = iprot.readListBegin()
-          for _i113 in xrange(_size109):
+          for _i113 in range(_size109):
             _elem114 = SubmitJobResponse()
             _elem114.read(iprot)
             self.success.append(_elem114)
@@ -1479,7 +1479,7 @@ class submitJobs_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1540,7 +1540,7 @@ class terminateCluster_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1599,7 +1599,7 @@ class terminateCluster_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1660,7 +1660,7 @@ class modifyInstanceGroup_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1720,7 +1720,7 @@ class modifyInstanceGroup_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1780,7 +1780,7 @@ class describeCluster_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1840,7 +1840,7 @@ class describeCluster_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1900,7 +1900,7 @@ class describeInstanceGroup_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1960,7 +1960,7 @@ class describeInstanceGroup_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2032,7 +2032,7 @@ class describeInstance_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2092,7 +2092,7 @@ class describeInstance_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2164,7 +2164,7 @@ class describeJob_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2224,7 +2224,7 @@ class describeJob_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2296,7 +2296,7 @@ class listClusters_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2331,7 +2331,7 @@ class listClusters_result:
         if ftype == TType.LIST:
           self.success = []
           (_etype119, _size116) = iprot.readListBegin()
-          for _i120 in xrange(_size116):
+          for _i120 in range(_size116):
             _elem121 = ClusterDetail()
             _elem121.read(iprot)
             self.success.append(_elem121)
@@ -2364,7 +2364,7 @@ class listClusters_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2424,7 +2424,7 @@ class listInstanceGroups_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2459,7 +2459,7 @@ class listInstanceGroups_result:
         if ftype == TType.LIST:
           self.success = []
           (_etype126, _size123) = iprot.readListBegin()
-          for _i127 in xrange(_size123):
+          for _i127 in range(_size123):
             _elem128 = InstanceGroupDetail()
             _elem128.read(iprot)
             self.success.append(_elem128)
@@ -2492,7 +2492,7 @@ class listInstanceGroups_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2552,7 +2552,7 @@ class listInstancesInCluster_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2587,7 +2587,7 @@ class listInstancesInCluster_result:
         if ftype == TType.LIST:
           self.success = []
           (_etype133, _size130) = iprot.readListBegin()
-          for _i134 in xrange(_size130):
+          for _i134 in range(_size130):
             _elem135 = InstanceDetail()
             _elem135.read(iprot)
             self.success.append(_elem135)
@@ -2620,7 +2620,7 @@ class listInstancesInCluster_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2704,7 +2704,7 @@ class listInstancesInGroup_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2739,7 +2739,7 @@ class listInstancesInGroup_result:
         if ftype == TType.LIST:
           self.success = []
           (_etype140, _size137) = iprot.readListBegin()
-          for _i141 in xrange(_size137):
+          for _i141 in range(_size137):
             _elem142 = InstanceDetail()
             _elem142.read(iprot)
             self.success.append(_elem142)
@@ -2772,7 +2772,7 @@ class listInstancesInGroup_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2832,7 +2832,7 @@ class listJobs_args:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2867,7 +2867,7 @@ class listJobs_result:
         if ftype == TType.LIST:
           self.success = []
           (_etype147, _size144) = iprot.readListBegin()
-          for _i148 in xrange(_size144):
+          for _i148 in range(_size144):
             _elem149 = JobDetail()
             _elem149.read(iprot)
             self.success.append(_elem149)
@@ -2900,7 +2900,7 @@ class listJobs_result:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

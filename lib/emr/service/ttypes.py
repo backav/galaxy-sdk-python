@@ -233,7 +233,7 @@ class Timeline:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -318,7 +318,7 @@ class Status:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -414,7 +414,7 @@ class InstanceTypeInfo:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -458,7 +458,7 @@ class EMRUser:
         if ftype == TType.LIST:
           self.clusterIds = []
           (_etype3, _size0) = iprot.readListBegin()
-          for _i4 in xrange(_size0):
+          for _i4 in range(_size0):
             _elem5 = iprot.readString();
             self.clusterIds.append(_elem5)
           iprot.readListEnd()
@@ -496,7 +496,7 @@ class EMRUser:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -606,7 +606,7 @@ class AddInstanceGroupRequest:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -696,7 +696,7 @@ class AddInstanceGroupResponse:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -770,7 +770,7 @@ class SubmitJobRequest:
         if ftype == TType.LIST:
           self.jarArgs = []
           (_etype10, _size7) = iprot.readListBegin()
-          for _i11 in xrange(_size7):
+          for _i11 in range(_size7):
             _elem12 = iprot.readString();
             self.jarArgs.append(_elem12)
           iprot.readListEnd()
@@ -780,7 +780,7 @@ class SubmitJobRequest:
         if ftype == TType.MAP:
           self.jarProperties = {}
           (_ktype14, _vtype15, _size13 ) = iprot.readMapBegin()
-          for _i17 in xrange(_size13):
+          for _i17 in range(_size13):
             _key18 = iprot.readString();
             _val19 = iprot.readString();
             self.jarProperties[_key18] = _val19
@@ -828,7 +828,7 @@ class SubmitJobRequest:
     if self.jarProperties is not None:
       oprot.writeFieldBegin('jarProperties', TType.MAP, 6)
       oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.jarProperties))
-      for kiter21,viter22 in self.jarProperties.items():
+      for kiter21,viter22 in list(self.jarProperties.items()):
         oprot.writeString(kiter21)
         oprot.writeString(viter22)
       oprot.writeMapEnd()
@@ -848,7 +848,7 @@ class SubmitJobRequest:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -938,7 +938,7 @@ class SubmitJobResponse:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1025,7 +1025,7 @@ class CreateClusterRequest:
         if ftype == TType.LIST:
           self.addInstanceGroupRequests = []
           (_etype26, _size23) = iprot.readListBegin()
-          for _i27 in xrange(_size23):
+          for _i27 in range(_size23):
             _elem28 = AddInstanceGroupRequest()
             _elem28.read(iprot)
             self.addInstanceGroupRequests.append(_elem28)
@@ -1036,7 +1036,7 @@ class CreateClusterRequest:
         if ftype == TType.LIST:
           self.submitJobRequests = []
           (_etype32, _size29) = iprot.readListBegin()
-          for _i33 in xrange(_size29):
+          for _i33 in range(_size29):
             _elem34 = SubmitJobRequest()
             _elem34.read(iprot)
             self.submitJobRequests.append(_elem34)
@@ -1102,7 +1102,7 @@ class CreateClusterRequest:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1157,7 +1157,7 @@ class CreateClusterResponse:
         if ftype == TType.LIST:
           self.addInstanceGroupResponses = []
           (_etype40, _size37) = iprot.readListBegin()
-          for _i41 in xrange(_size37):
+          for _i41 in range(_size37):
             _elem42 = AddInstanceGroupResponse()
             _elem42.read(iprot)
             self.addInstanceGroupResponses.append(_elem42)
@@ -1168,7 +1168,7 @@ class CreateClusterResponse:
         if ftype == TType.LIST:
           self.submitJobResponses = []
           (_etype46, _size43) = iprot.readListBegin()
-          for _i47 in xrange(_size43):
+          for _i47 in range(_size43):
             _elem48 = SubmitJobResponse()
             _elem48.read(iprot)
             self.submitJobResponses.append(_elem48)
@@ -1220,7 +1220,7 @@ class CreateClusterResponse:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1295,7 +1295,7 @@ class TerminateClusterRequest:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1369,7 +1369,7 @@ class ModifyInstanceGroupRequest:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1411,7 +1411,7 @@ class ModifyInstanceGroupResponse:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1487,7 +1487,7 @@ class KillJobRequest:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1622,7 +1622,7 @@ class InstanceGroupDetail:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1783,7 +1783,7 @@ class InstanceDetail:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1857,7 +1857,7 @@ class JobDetail:
         if ftype == TType.LIST:
           self.jarArgs = []
           (_etype54, _size51) = iprot.readListBegin()
-          for _i55 in xrange(_size51):
+          for _i55 in range(_size51):
             _elem56 = iprot.readString();
             self.jarArgs.append(_elem56)
           iprot.readListEnd()
@@ -1867,7 +1867,7 @@ class JobDetail:
         if ftype == TType.MAP:
           self.jarProperties = {}
           (_ktype58, _vtype59, _size57 ) = iprot.readMapBegin()
-          for _i61 in xrange(_size57):
+          for _i61 in range(_size57):
             _key62 = iprot.readString();
             _val63 = iprot.readString();
             self.jarProperties[_key62] = _val63
@@ -1916,7 +1916,7 @@ class JobDetail:
     if self.jarProperties is not None:
       oprot.writeFieldBegin('jarProperties', TType.MAP, 6)
       oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.jarProperties))
-      for kiter65,viter66 in self.jarProperties.items():
+      for kiter65,viter66 in list(self.jarProperties.items()):
         oprot.writeString(kiter65)
         oprot.writeString(viter66)
       oprot.writeMapEnd()
@@ -1936,7 +1936,7 @@ class JobDetail:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2034,7 +2034,7 @@ class ClusterDetail:
         if ftype == TType.LIST:
           self.instanceGroups = []
           (_etype70, _size67) = iprot.readListBegin()
-          for _i71 in xrange(_size67):
+          for _i71 in range(_size67):
             _elem72 = InstanceGroupDetail()
             _elem72.read(iprot)
             self.instanceGroups.append(_elem72)
@@ -2116,7 +2116,7 @@ class ClusterDetail:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2188,7 +2188,7 @@ class SetConfigRequest:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2248,7 +2248,7 @@ class SetConfigResponse:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2292,7 +2292,7 @@ class StartServiceRequest:
         if ftype == TType.LIST:
           self.services = []
           (_etype77, _size74) = iprot.readListBegin()
-          for _i78 in xrange(_size74):
+          for _i78 in range(_size74):
             _elem79 = iprot.readString();
             self.services.append(_elem79)
           iprot.readListEnd()
@@ -2328,7 +2328,7 @@ class StartServiceRequest:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2388,7 +2388,7 @@ class StartServiceResponse:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2432,7 +2432,7 @@ class StopServiceRequest:
         if ftype == TType.LIST:
           self.services = []
           (_etype84, _size81) = iprot.readListBegin()
-          for _i85 in xrange(_size81):
+          for _i85 in range(_size81):
             _elem86 = iprot.readString();
             self.services.append(_elem86)
           iprot.readListEnd()
@@ -2468,7 +2468,7 @@ class StopServiceRequest:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2528,7 +2528,7 @@ class StopServiceResponse:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2625,7 +2625,7 @@ class ClusterState:
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

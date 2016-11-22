@@ -425,7 +425,7 @@ class Value(object):
         if ftype == TType.LIST:
           self.boolSetValue = []
           (_etype3, _size0) = iprot.readListBegin()
-          for _i4 in xrange(_size0):
+          for _i4 in range(_size0):
             _elem5 = iprot.readBool();
             self.boolSetValue.append(_elem5)
           iprot.readListEnd()
@@ -435,7 +435,7 @@ class Value(object):
         if ftype == TType.LIST:
           self.int8SetValue = []
           (_etype9, _size6) = iprot.readListBegin()
-          for _i10 in xrange(_size6):
+          for _i10 in range(_size6):
             _elem11 = iprot.readByte();
             self.int8SetValue.append(_elem11)
           iprot.readListEnd()
@@ -445,7 +445,7 @@ class Value(object):
         if ftype == TType.LIST:
           self.int16SetValue = []
           (_etype15, _size12) = iprot.readListBegin()
-          for _i16 in xrange(_size12):
+          for _i16 in range(_size12):
             _elem17 = iprot.readI16();
             self.int16SetValue.append(_elem17)
           iprot.readListEnd()
@@ -455,7 +455,7 @@ class Value(object):
         if ftype == TType.LIST:
           self.int32SetValue = []
           (_etype21, _size18) = iprot.readListBegin()
-          for _i22 in xrange(_size18):
+          for _i22 in range(_size18):
             _elem23 = iprot.readI32();
             self.int32SetValue.append(_elem23)
           iprot.readListEnd()
@@ -465,7 +465,7 @@ class Value(object):
         if ftype == TType.LIST:
           self.int64SetValue = []
           (_etype27, _size24) = iprot.readListBegin()
-          for _i28 in xrange(_size24):
+          for _i28 in range(_size24):
             _elem29 = iprot.readI64();
             self.int64SetValue.append(_elem29)
           iprot.readListEnd()
@@ -475,7 +475,7 @@ class Value(object):
         if ftype == TType.LIST:
           self.doubleSetValue = []
           (_etype33, _size30) = iprot.readListBegin()
-          for _i34 in xrange(_size30):
+          for _i34 in range(_size30):
             _elem35 = iprot.readDouble();
             self.doubleSetValue.append(_elem35)
           iprot.readListEnd()
@@ -485,7 +485,7 @@ class Value(object):
         if ftype == TType.LIST:
           self.stringSetValue = []
           (_etype39, _size36) = iprot.readListBegin()
-          for _i40 in xrange(_size36):
+          for _i40 in range(_size36):
             _elem41 = iprot.readString();
             self.stringSetValue.append(_elem41)
           iprot.readListEnd()
@@ -495,7 +495,7 @@ class Value(object):
         if ftype == TType.LIST:
           self.binarySetValue = []
           (_etype45, _size42) = iprot.readListBegin()
-          for _i46 in xrange(_size42):
+          for _i46 in range(_size42):
             _elem47 = iprot.readString();
             self.binarySetValue.append(_elem47)
           iprot.readListEnd()
@@ -638,7 +638,7 @@ class Value(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -719,7 +719,7 @@ class Datum(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -799,7 +799,7 @@ class ProvisionThroughput(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -866,7 +866,7 @@ class TableQuota(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -944,7 +944,7 @@ class KeySpec(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -991,7 +991,7 @@ class LocalSecondaryIndexSpec(object):
         if ftype == TType.LIST:
           self.indexSchema = []
           (_etype59, _size56) = iprot.readListBegin()
-          for _i60 in xrange(_size56):
+          for _i60 in range(_size56):
             _elem61 = KeySpec()
             _elem61.read(iprot)
             self.indexSchema.append(_elem61)
@@ -1002,7 +1002,7 @@ class LocalSecondaryIndexSpec(object):
         if ftype == TType.LIST:
           self.projections = []
           (_etype65, _size62) = iprot.readListBegin()
-          for _i66 in xrange(_size62):
+          for _i66 in range(_size62):
             _elem67 = iprot.readString();
             self.projections.append(_elem67)
           iprot.readListEnd()
@@ -1067,7 +1067,7 @@ class LocalSecondaryIndexSpec(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1109,7 +1109,7 @@ class EntityGroupSpec(object):
         if ftype == TType.LIST:
           self.attributes = []
           (_etype73, _size70) = iprot.readListBegin()
-          for _i74 in xrange(_size70):
+          for _i74 in range(_size70):
             _elem75 = KeySpec()
             _elem75.read(iprot)
             self.attributes.append(_elem75)
@@ -1157,7 +1157,7 @@ class EntityGroupSpec(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1211,7 +1211,7 @@ class StreamSpec(object):
         if ftype == TType.LIST:
           self.attributes = []
           (_etype80, _size77) = iprot.readListBegin()
-          for _i81 in xrange(_size77):
+          for _i81 in range(_size77):
             _elem82 = iprot.readString();
             self.attributes.append(_elem82)
           iprot.readListEnd()
@@ -1258,7 +1258,7 @@ class StreamSpec(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1330,7 +1330,7 @@ class TableSchema(object):
         if ftype == TType.LIST:
           self.primaryIndex = []
           (_etype87, _size84) = iprot.readListBegin()
-          for _i88 in xrange(_size84):
+          for _i88 in range(_size84):
             _elem89 = KeySpec()
             _elem89.read(iprot)
             self.primaryIndex.append(_elem89)
@@ -1341,7 +1341,7 @@ class TableSchema(object):
         if ftype == TType.MAP:
           self.secondaryIndexes = {}
           (_ktype91, _vtype92, _size90 ) = iprot.readMapBegin()
-          for _i94 in xrange(_size90):
+          for _i94 in range(_size90):
             _key95 = iprot.readString();
             _val96 = LocalSecondaryIndexSpec()
             _val96.read(iprot)
@@ -1353,7 +1353,7 @@ class TableSchema(object):
         if ftype == TType.MAP:
           self.attributes = {}
           (_ktype98, _vtype99, _size97 ) = iprot.readMapBegin()
-          for _i101 in xrange(_size97):
+          for _i101 in range(_size97):
             _key102 = iprot.readString();
             _val103 = iprot.readI32();
             self.attributes[_key102] = _val103
@@ -1374,7 +1374,7 @@ class TableSchema(object):
         if ftype == TType.MAP:
           self.streams = {}
           (_ktype105, _vtype106, _size104 ) = iprot.readMapBegin()
-          for _i108 in xrange(_size104):
+          for _i108 in range(_size104):
             _key109 = iprot.readString();
             _val110 = StreamSpec()
             _val110.read(iprot)
@@ -1410,7 +1410,7 @@ class TableSchema(object):
     if self.secondaryIndexes is not None:
       oprot.writeFieldBegin('secondaryIndexes', TType.MAP, 4)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.secondaryIndexes))
-      for kiter112,viter113 in self.secondaryIndexes.items():
+      for kiter112,viter113 in list(self.secondaryIndexes.items()):
         oprot.writeString(kiter112)
         viter113.write(oprot)
       oprot.writeMapEnd()
@@ -1418,7 +1418,7 @@ class TableSchema(object):
     if self.attributes is not None:
       oprot.writeFieldBegin('attributes', TType.MAP, 5)
       oprot.writeMapBegin(TType.STRING, TType.I32, len(self.attributes))
-      for kiter114,viter115 in self.attributes.items():
+      for kiter114,viter115 in list(self.attributes.items()):
         oprot.writeString(kiter114)
         oprot.writeI32(viter115)
       oprot.writeMapEnd()
@@ -1434,7 +1434,7 @@ class TableSchema(object):
     if self.streams is not None:
       oprot.writeFieldBegin('streams', TType.MAP, 8)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.streams))
-      for kiter116,viter117 in self.streams.items():
+      for kiter116,viter117 in list(self.streams.items()):
         oprot.writeString(kiter116)
         viter117.write(oprot)
       oprot.writeMapEnd()
@@ -1460,7 +1460,7 @@ class TableSchema(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1540,11 +1540,11 @@ class TableMetadata(object):
         if ftype == TType.MAP:
           self.appAcl = {}
           (_ktype119, _vtype120, _size118 ) = iprot.readMapBegin()
-          for _i122 in xrange(_size118):
+          for _i122 in range(_size118):
             _key123 = iprot.readString();
             _val124 = []
             (_etype128, _size125) = iprot.readListBegin()
-            for _i129 in xrange(_size125):
+            for _i129 in range(_size125):
               _elem130 = iprot.readI32();
               _val124.append(_elem130)
             iprot.readListEnd()
@@ -1619,7 +1619,7 @@ class TableMetadata(object):
     if self.appAcl is not None:
       oprot.writeFieldBegin('appAcl', TType.MAP, 3)
       oprot.writeMapBegin(TType.STRING, TType.LIST, len(self.appAcl))
-      for kiter131,viter132 in self.appAcl.items():
+      for kiter131,viter132 in list(self.appAcl.items()):
         oprot.writeString(kiter131)
         oprot.writeListBegin(TType.I32, len(viter132))
         for iter133 in viter132:
@@ -1683,7 +1683,7 @@ class TableMetadata(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1765,7 +1765,7 @@ class TableSpec(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1897,7 +1897,7 @@ class TableStatus(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1992,7 +1992,7 @@ class TableInfo(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2099,7 +2099,7 @@ class SimpleCondition(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2140,7 +2140,7 @@ class TableSplit(object):
         if ftype == TType.MAP:
           self.startKey = {}
           (_ktype135, _vtype136, _size134 ) = iprot.readMapBegin()
-          for _i138 in xrange(_size134):
+          for _i138 in range(_size134):
             _key139 = iprot.readString();
             _val140 = Datum()
             _val140.read(iprot)
@@ -2152,7 +2152,7 @@ class TableSplit(object):
         if ftype == TType.MAP:
           self.stopKey = {}
           (_ktype142, _vtype143, _size141 ) = iprot.readMapBegin()
-          for _i145 in xrange(_size141):
+          for _i145 in range(_size141):
             _key146 = iprot.readString();
             _val147 = Datum()
             _val147.read(iprot)
@@ -2173,7 +2173,7 @@ class TableSplit(object):
     if self.startKey is not None:
       oprot.writeFieldBegin('startKey', TType.MAP, 1)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.startKey))
-      for kiter148,viter149 in self.startKey.items():
+      for kiter148,viter149 in list(self.startKey.items()):
         oprot.writeString(kiter148)
         viter149.write(oprot)
       oprot.writeMapEnd()
@@ -2181,7 +2181,7 @@ class TableSplit(object):
     if self.stopKey is not None:
       oprot.writeFieldBegin('stopKey', TType.MAP, 2)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.stopKey))
-      for kiter150,viter151 in self.stopKey.items():
+      for kiter150,viter151 in list(self.stopKey.items()):
         oprot.writeString(kiter150)
         viter151.write(oprot)
       oprot.writeMapEnd()
@@ -2201,7 +2201,7 @@ class TableSplit(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2248,7 +2248,7 @@ class GetRequest(object):
         if ftype == TType.MAP:
           self.keys = {}
           (_ktype153, _vtype154, _size152 ) = iprot.readMapBegin()
-          for _i156 in xrange(_size152):
+          for _i156 in range(_size152):
             _key157 = iprot.readString();
             _val158 = Datum()
             _val158.read(iprot)
@@ -2260,7 +2260,7 @@ class GetRequest(object):
         if ftype == TType.LIST:
           self.attributes = []
           (_etype162, _size159) = iprot.readListBegin()
-          for _i163 in xrange(_size159):
+          for _i163 in range(_size159):
             _elem164 = iprot.readString();
             self.attributes.append(_elem164)
           iprot.readListEnd()
@@ -2283,7 +2283,7 @@ class GetRequest(object):
     if self.keys is not None:
       oprot.writeFieldBegin('keys', TType.MAP, 2)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.keys))
-      for kiter165,viter166 in self.keys.items():
+      for kiter165,viter166 in list(self.keys.items()):
         oprot.writeString(kiter165)
         viter166.write(oprot)
       oprot.writeMapEnd()
@@ -2311,7 +2311,7 @@ class GetRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2347,7 +2347,7 @@ class GetResult(object):
         if ftype == TType.MAP:
           self.item = {}
           (_ktype169, _vtype170, _size168 ) = iprot.readMapBegin()
-          for _i172 in xrange(_size168):
+          for _i172 in range(_size168):
             _key173 = iprot.readString();
             _val174 = Datum()
             _val174.read(iprot)
@@ -2368,7 +2368,7 @@ class GetResult(object):
     if self.item is not None:
       oprot.writeFieldBegin('item', TType.MAP, 1)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.item))
-      for kiter175,viter176 in self.item.items():
+      for kiter175,viter176 in list(self.item.items()):
         oprot.writeString(kiter175)
         viter176.write(oprot)
       oprot.writeMapEnd()
@@ -2387,7 +2387,7 @@ class GetResult(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2434,7 +2434,7 @@ class PutRequest(object):
         if ftype == TType.MAP:
           self.record = {}
           (_ktype178, _vtype179, _size177 ) = iprot.readMapBegin()
-          for _i181 in xrange(_size177):
+          for _i181 in range(_size177):
             _key182 = iprot.readString();
             _val183 = Datum()
             _val183.read(iprot)
@@ -2465,7 +2465,7 @@ class PutRequest(object):
     if self.record is not None:
       oprot.writeFieldBegin('record', TType.MAP, 2)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.record))
-      for kiter184,viter185 in self.record.items():
+      for kiter184,viter185 in list(self.record.items()):
         oprot.writeString(kiter184)
         viter185.write(oprot)
       oprot.writeMapEnd()
@@ -2490,7 +2490,7 @@ class PutRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2555,7 +2555,7 @@ class PutResult(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2602,7 +2602,7 @@ class IncrementRequest(object):
         if ftype == TType.MAP:
           self.keys = {}
           (_ktype187, _vtype188, _size186 ) = iprot.readMapBegin()
-          for _i190 in xrange(_size186):
+          for _i190 in range(_size186):
             _key191 = iprot.readString();
             _val192 = Datum()
             _val192.read(iprot)
@@ -2614,7 +2614,7 @@ class IncrementRequest(object):
         if ftype == TType.MAP:
           self.amounts = {}
           (_ktype194, _vtype195, _size193 ) = iprot.readMapBegin()
-          for _i197 in xrange(_size193):
+          for _i197 in range(_size193):
             _key198 = iprot.readString();
             _val199 = Datum()
             _val199.read(iprot)
@@ -2639,7 +2639,7 @@ class IncrementRequest(object):
     if self.keys is not None:
       oprot.writeFieldBegin('keys', TType.MAP, 2)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.keys))
-      for kiter200,viter201 in self.keys.items():
+      for kiter200,viter201 in list(self.keys.items()):
         oprot.writeString(kiter200)
         viter201.write(oprot)
       oprot.writeMapEnd()
@@ -2647,7 +2647,7 @@ class IncrementRequest(object):
     if self.amounts is not None:
       oprot.writeFieldBegin('amounts', TType.MAP, 3)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.amounts))
-      for kiter202,viter203 in self.amounts.items():
+      for kiter202,viter203 in list(self.amounts.items()):
         oprot.writeString(kiter202)
         viter203.write(oprot)
       oprot.writeMapEnd()
@@ -2668,7 +2668,7 @@ class IncrementRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2704,7 +2704,7 @@ class IncrementResult(object):
         if ftype == TType.MAP:
           self.amounts = {}
           (_ktype205, _vtype206, _size204 ) = iprot.readMapBegin()
-          for _i208 in xrange(_size204):
+          for _i208 in range(_size204):
             _key209 = iprot.readString();
             _val210 = Datum()
             _val210.read(iprot)
@@ -2725,7 +2725,7 @@ class IncrementResult(object):
     if self.amounts is not None:
       oprot.writeFieldBegin('amounts', TType.MAP, 1)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.amounts))
-      for kiter211,viter212 in self.amounts.items():
+      for kiter211,viter212 in list(self.amounts.items()):
         oprot.writeString(kiter211)
         viter212.write(oprot)
       oprot.writeMapEnd()
@@ -2744,7 +2744,7 @@ class IncrementResult(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2795,7 +2795,7 @@ class RemoveRequest(object):
         if ftype == TType.MAP:
           self.keys = {}
           (_ktype214, _vtype215, _size213 ) = iprot.readMapBegin()
-          for _i217 in xrange(_size213):
+          for _i217 in range(_size213):
             _key218 = iprot.readString();
             _val219 = Datum()
             _val219.read(iprot)
@@ -2807,7 +2807,7 @@ class RemoveRequest(object):
         if ftype == TType.LIST:
           self.attributes = []
           (_etype223, _size220) = iprot.readListBegin()
-          for _i224 in xrange(_size220):
+          for _i224 in range(_size220):
             _elem225 = iprot.readString();
             self.attributes.append(_elem225)
           iprot.readListEnd()
@@ -2836,7 +2836,7 @@ class RemoveRequest(object):
     if self.keys is not None:
       oprot.writeFieldBegin('keys', TType.MAP, 2)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.keys))
-      for kiter226,viter227 in self.keys.items():
+      for kiter226,viter227 in list(self.keys.items()):
         oprot.writeString(kiter226)
         viter227.write(oprot)
       oprot.writeMapEnd()
@@ -2869,7 +2869,7 @@ class RemoveRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2934,7 +2934,7 @@ class RemoveResult(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3042,7 +3042,7 @@ class Request(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3121,7 +3121,7 @@ class ScanAction(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3210,7 +3210,7 @@ class ScanRequest(object):
         if ftype == TType.MAP:
           self.startKey = {}
           (_ktype230, _vtype231, _size229 ) = iprot.readMapBegin()
-          for _i233 in xrange(_size229):
+          for _i233 in range(_size229):
             _key234 = iprot.readString();
             _val235 = Datum()
             _val235.read(iprot)
@@ -3222,7 +3222,7 @@ class ScanRequest(object):
         if ftype == TType.MAP:
           self.stopKey = {}
           (_ktype237, _vtype238, _size236 ) = iprot.readMapBegin()
-          for _i240 in xrange(_size236):
+          for _i240 in range(_size236):
             _key241 = iprot.readString();
             _val242 = Datum()
             _val242.read(iprot)
@@ -3234,7 +3234,7 @@ class ScanRequest(object):
         if ftype == TType.LIST:
           self.attributes = []
           (_etype246, _size243) = iprot.readListBegin()
-          for _i247 in xrange(_size243):
+          for _i247 in range(_size243):
             _elem248 = iprot.readString();
             self.attributes.append(_elem248)
           iprot.readListEnd()
@@ -3297,7 +3297,7 @@ class ScanRequest(object):
     if self.startKey is not None:
       oprot.writeFieldBegin('startKey', TType.MAP, 3)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.startKey))
-      for kiter249,viter250 in self.startKey.items():
+      for kiter249,viter250 in list(self.startKey.items()):
         oprot.writeString(kiter249)
         viter250.write(oprot)
       oprot.writeMapEnd()
@@ -3305,7 +3305,7 @@ class ScanRequest(object):
     if self.stopKey is not None:
       oprot.writeFieldBegin('stopKey', TType.MAP, 4)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.stopKey))
-      for kiter251,viter252 in self.stopKey.items():
+      for kiter251,viter252 in list(self.stopKey.items()):
         oprot.writeString(kiter251)
         viter252.write(oprot)
       oprot.writeMapEnd()
@@ -3370,7 +3370,7 @@ class ScanRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3412,7 +3412,7 @@ class ScanResult(object):
         if ftype == TType.MAP:
           self.nextStartKey = {}
           (_ktype255, _vtype256, _size254 ) = iprot.readMapBegin()
-          for _i258 in xrange(_size254):
+          for _i258 in range(_size254):
             _key259 = iprot.readString();
             _val260 = Datum()
             _val260.read(iprot)
@@ -3424,10 +3424,10 @@ class ScanResult(object):
         if ftype == TType.LIST:
           self.records = []
           (_etype264, _size261) = iprot.readListBegin()
-          for _i265 in xrange(_size261):
+          for _i265 in range(_size261):
             _elem266 = {}
             (_ktype268, _vtype269, _size267 ) = iprot.readMapBegin()
-            for _i271 in xrange(_size267):
+            for _i271 in range(_size267):
               _key272 = iprot.readString();
               _val273 = Datum()
               _val273.read(iprot)
@@ -3455,7 +3455,7 @@ class ScanResult(object):
     if self.nextStartKey is not None:
       oprot.writeFieldBegin('nextStartKey', TType.MAP, 1)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.nextStartKey))
-      for kiter274,viter275 in self.nextStartKey.items():
+      for kiter274,viter275 in list(self.nextStartKey.items()):
         oprot.writeString(kiter274)
         viter275.write(oprot)
       oprot.writeMapEnd()
@@ -3465,7 +3465,7 @@ class ScanResult(object):
       oprot.writeListBegin(TType.MAP, len(self.records))
       for iter276 in self.records:
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(iter276))
-        for kiter277,viter278 in iter276.items():
+        for kiter277,viter278 in list(iter276.items()):
           oprot.writeString(kiter277)
           viter278.write(oprot)
         oprot.writeMapEnd()
@@ -3491,7 +3491,7 @@ class ScanResult(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3570,7 +3570,7 @@ class BatchRequestItem(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3678,7 +3678,7 @@ class Result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3784,7 +3784,7 @@ class BatchResultItem(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3820,7 +3820,7 @@ class BatchRequest(object):
         if ftype == TType.LIST:
           self.items = []
           (_etype282, _size279) = iprot.readListBegin()
-          for _i283 in xrange(_size279):
+          for _i283 in range(_size279):
             _elem284 = BatchRequestItem()
             _elem284.read(iprot)
             self.items.append(_elem284)
@@ -3858,7 +3858,7 @@ class BatchRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3894,7 +3894,7 @@ class BatchResult(object):
         if ftype == TType.LIST:
           self.items = []
           (_etype289, _size286) = iprot.readListBegin()
-          for _i290 in xrange(_size286):
+          for _i290 in range(_size286):
             _elem291 = BatchResultItem()
             _elem291.read(iprot)
             self.items.append(_elem291)
@@ -3932,7 +3932,7 @@ class BatchResult(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3977,7 +3977,7 @@ class InternalMutationLogEntry(object):
         if ftype == TType.MAP:
           self.record = {}
           (_ktype294, _vtype295, _size293 ) = iprot.readMapBegin()
-          for _i297 in xrange(_size293):
+          for _i297 in range(_size293):
             _key298 = iprot.readString();
             _val299 = iprot.readString();
             self.record[_key298] = _val299
@@ -4007,7 +4007,7 @@ class InternalMutationLogEntry(object):
     if self.record is not None:
       oprot.writeFieldBegin('record', TType.MAP, 1)
       oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.record))
-      for kiter300,viter301 in self.record.items():
+      for kiter300,viter301 in list(self.record.items()):
         oprot.writeString(kiter300)
         oprot.writeString(viter301)
       oprot.writeMapEnd()
@@ -4036,7 +4036,7 @@ class InternalMutationLogEntry(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4084,7 +4084,7 @@ class MutationLogEntry(object):
         if ftype == TType.MAP:
           self.record = {}
           (_ktype303, _vtype304, _size302 ) = iprot.readMapBegin()
-          for _i306 in xrange(_size302):
+          for _i306 in range(_size302):
             _key307 = iprot.readString();
             _val308 = Datum()
             _val308.read(iprot)
@@ -4120,7 +4120,7 @@ class MutationLogEntry(object):
     if self.record is not None:
       oprot.writeFieldBegin('record', TType.MAP, 1)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.record))
-      for kiter309,viter310 in self.record.items():
+      for kiter309,viter310 in list(self.record.items()):
         oprot.writeString(kiter309)
         viter310.write(oprot)
       oprot.writeMapEnd()
@@ -4154,7 +4154,7 @@ class MutationLogEntry(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4199,7 +4199,7 @@ class RecordImage(object):
         if ftype == TType.MAP:
           self.record = {}
           (_ktype312, _vtype313, _size311 ) = iprot.readMapBegin()
-          for _i315 in xrange(_size311):
+          for _i315 in range(_size311):
             _key316 = iprot.readString();
             _val317 = Datum()
             _val317.read(iprot)
@@ -4230,7 +4230,7 @@ class RecordImage(object):
     if self.record is not None:
       oprot.writeFieldBegin('record', TType.MAP, 1)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.record))
-      for kiter318,viter319 in self.record.items():
+      for kiter318,viter319 in list(self.record.items()):
         oprot.writeString(kiter318)
         viter319.write(oprot)
       oprot.writeMapEnd()
@@ -4259,7 +4259,7 @@ class RecordImage(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

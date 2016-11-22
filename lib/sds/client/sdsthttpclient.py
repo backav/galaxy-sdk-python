@@ -18,16 +18,16 @@
 # under the License.
 #
 
-import httplib
+import http.client
 import os
 import socket
 import sys
-import urllib
-import urlparse
+import urllib.request, urllib.parse, urllib.error
+import urllib.parse
 import time
 import hashlib
 import hmac
-from cStringIO import StringIO
+from io import StringIO
 
 from thrift.transport.TTransport import TTransportBase
 from thrift.transport.TTransport import TMemoryBuffer
@@ -49,13 +49,13 @@ class SdsTHttpClient(TTransportBase):
 
   def __init__(self, credential, uri_or_host, timeout=None, thrift_protocol=ThriftProtocol.TBINARY):
     self.credential = credential
-    parsed = urlparse.urlparse(uri_or_host)
+    parsed = urllib.parse.urlparse(uri_or_host)
     self.scheme = parsed.scheme
     assert self.scheme in ('http', 'https')
     if self.scheme == 'http':
-      self.port = parsed.port or httplib.HTTP_PORT
+      self.port = parsed.port or http.client.HTTP_PORT
     elif self.scheme == 'https':
-      self.port = parsed.port or httplib.HTTPS_PORT
+      self.port = parsed.port or http.client.HTTPS_PORT
     self.host = parsed.hostname
     self.path = parsed.path
     if parsed.query:
@@ -69,9 +69,9 @@ class SdsTHttpClient(TTransportBase):
 
   def open(self):
     if self.scheme == 'http':
-      self.__http = httplib.HTTP(self.host, self.port)
+      self.__http = http.client.HTTP(self.host, self.port)
     else:
-      self.__http = httplib.HTTPS(self.host, self.port)
+      self.__http = http.client.HTTPS(self.host, self.port)
 
   def close(self):
     self.__http.close()
@@ -130,14 +130,14 @@ class SdsTHttpClient(TTransportBase):
       user_agent = 'Python/THttpClient'
       script = os.path.basename(sys.argv[0])
       if script:
-        user_agent = '%s (%s)' % (user_agent, urllib.quote(script))
+        user_agent = '%s (%s)' % (user_agent, urllib.parse.quote(script))
       self.__http.putheader('User-Agent', user_agent)
 
     if self.__custom_headers:
-      for key, val in self.__custom_headers.iteritems():
+      for key, val in self.__custom_headers.items():
         self.__http.putheader(key, val)
 
-    for key, val in self.__auth_headers(data).iteritems():
+    for key, val in self.__auth_headers(data).items():
       self.__http.putheader(key, val)
 
     self.__http.endheaders()
@@ -169,7 +169,7 @@ class SdsTHttpClient(TTransportBase):
     auth_header.userType = self.credential.type
     auth_header.secretKeyId = self.credential.secretKeyId
 
-    auth_header.signedHeaders = list(headers.iterkeys())
+    auth_header.signedHeaders = list(headers.keys())
     buf = "\n".join([headers[x] for x in auth_header.signedHeaders])
     auth_header.signature = \
       hmac.new(self.credential.secretKey, buf, hashlib.sha1).hexdigest()

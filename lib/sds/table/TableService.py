@@ -9,7 +9,7 @@
 
 from thrift.Thrift import TType, TMessageType, TException, TApplicationException
 import sds.common.BaseService
-from ttypes import *
+from .ttypes import *
 from thrift.Thrift import TProcessor
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol, TProtocol
@@ -375,7 +375,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = get_result()
     try:
       result.success = self._handler.get(args.request)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("get", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -389,7 +389,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = put_result()
     try:
       result.success = self._handler.put(args.request)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("put", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -403,7 +403,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = increment_result()
     try:
       result.success = self._handler.increment(args.request)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("increment", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -417,7 +417,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = remove_result()
     try:
       result.success = self._handler.remove(args.request)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("remove", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -431,7 +431,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = scan_result()
     try:
       result.success = self._handler.scan(args.request)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("scan", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -445,7 +445,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = batch_result()
     try:
       result.success = self._handler.batch(args.request)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("batch", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -459,7 +459,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = putToRebuildIndex_result()
     try:
       result.success = self._handler.putToRebuildIndex(args.request)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("putToRebuildIndex", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -526,7 +526,7 @@ class get_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -605,7 +605,7 @@ class get_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -671,7 +671,7 @@ class put_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -750,7 +750,7 @@ class put_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -816,7 +816,7 @@ class increment_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -895,7 +895,7 @@ class increment_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -961,7 +961,7 @@ class remove_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1040,7 +1040,7 @@ class remove_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1106,7 +1106,7 @@ class scan_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1185,7 +1185,7 @@ class scan_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1251,7 +1251,7 @@ class batch_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1330,7 +1330,7 @@ class batch_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1396,7 +1396,7 @@ class putToRebuildIndex_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1475,7 +1475,7 @@ class putToRebuildIndex_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

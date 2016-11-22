@@ -17,7 +17,7 @@
 # under the License.
 #
 
-from TProtocol import TType, TProtocolBase, TProtocolException
+from .TProtocol import TType, TProtocolBase, TProtocolException
 import base64
 import json
 import math
@@ -57,7 +57,7 @@ CTYPES = {TType.BOOL:       'tf',
           TType.MAP:        'map'}
 
 JTYPES = {}
-for key in CTYPES.keys():
+for key in list(CTYPES.keys()):
   JTYPES[CTYPES[key]] = key
 
 
@@ -226,7 +226,7 @@ class TJSONProtocolBase(TProtocolBase):
         if character == ESCSEQ[1]:
           self.readJSONSyntaxChar(ZERO)
           self.readJSONSyntaxChar(ZERO)
-          character = json.JSONDecoder().decode('"\u00%s"' % self.trans.read(2))
+          character = json.JSONDecoder().decode('"\\u00%s"' % self.trans.read(2))
         else:
           off = ESCAPE_CHAR.find(character)
           if off == -1:

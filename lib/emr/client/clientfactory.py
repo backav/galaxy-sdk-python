@@ -7,12 +7,12 @@ import sys
 import time
 import uuid
 
-from constants import DEFAULT_CLIENT_TIMEOUT, MAX_RETRY, THRIFT_PROTOCOL_MAP
+from .constants import DEFAULT_CLIENT_TIMEOUT, MAX_RETRY, THRIFT_PROTOCOL_MAP
 from emr.client.constants import ERROR_BACKOFF
 from emr.exceptions.GalaxyEmrServiceException import GalaxyEmrServiceException
 from emr.service import EMRSchedulerService
 from emr.service.constants import API_ROOT_PATH, DEFAULT_SERVICE_ENDPOINT
-from emrthttpclient import EMRTHttpClient
+from .emrthttpclient import EMRTHttpClient
 from rpc.common.ttypes import ThriftProtocol, Version
 
 '''
@@ -62,14 +62,14 @@ class RetryableClient:
       while retry < self.max_retry:
         try:
           return getattr(self.client, item)(*args)
-        except GalaxyEmrServiceException, ex:
+        except GalaxyEmrServiceException as ex:
           if ERROR_BACKOFF.get("timetosleep") and retry < self.max_retry-1:
             timetosleep = ERROR_BACKOFF["timetosleep"] / 1000 * (1 << retry)
             time.sleep(timetosleep)
             retry += 1
           else:
             raise ex
-        except socket.timeout, se:
+        except socket.timeout as se:
           if self.retryIfTimeout and retry < self.max_retry-1:
             retry += 1
           else:

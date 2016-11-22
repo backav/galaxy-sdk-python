@@ -18,31 +18,31 @@
 # under the License.
 #
 
-import httplib
+import http.client
 import os
 import socket
 import sys
-import urllib
-import urlparse
+import urllib.request, urllib.parse, urllib.error
+import urllib.parse
 import time
 import hashlib
 import base64
 import hmac
 from email.utils import formatdate
 from collections import defaultdict
-from cStringIO import StringIO
+from io import StringIO
 
 from thrift.transport.TTransport import TTransportBase
 from thrift.transport.TTransport import TMemoryBuffer
 from thrift.protocol.TJSONProtocol import TJSONProtocol
-from constants import TIMESTAMP
-from constants import MI_DATE
-from constants import HOST
-from constants import CONTENT_MD5
-from constants import CONTENT_TYPE
-from constants import CONTENT_LENGTH
-from constants import AUTHORIZATION
-from constants import SubResource
+from .constants import TIMESTAMP
+from .constants import MI_DATE
+from .constants import HOST
+from .constants import CONTENT_MD5
+from .constants import CONTENT_TYPE
+from .constants import CONTENT_LENGTH
+from .constants import AUTHORIZATION
+from .constants import SubResource
 from rpc.auth.constants import HttpAuthorizationHeader
 from rpc.auth.constants import SIGNATURE_SUPPORT
 from rpc.auth.constants import MacAlgorithm
@@ -58,13 +58,13 @@ class EMRTHttpClient(TTransportBase):
       thrift_protocol, support_account_key):
     self.credential = credential
     self.uri = uri_or_host
-    parsed = urlparse.urlparse(uri_or_host)
+    parsed = urllib.parse.urlparse(uri_or_host)
     self.scheme = parsed.scheme
     assert self.scheme in ('http', 'https')
     if self.scheme == 'http':
-      self.port = parsed.port or httplib.HTTP_PORT
+      self.port = parsed.port or http.client.HTTP_PORT
     elif self.scheme == 'https':
-      self.port = parsed.port or httplib.HTTPS_PORT
+      self.port = parsed.port or http.client.HTTPS_PORT
     self.host = parsed.hostname
     self.path = parsed.path
     if parsed.query:
@@ -80,9 +80,9 @@ class EMRTHttpClient(TTransportBase):
 
   def open(self):
     if self.scheme == 'http':
-      self.__http = httplib.HTTP(self.host, self.port)
+      self.__http = http.client.HTTP(self.host, self.port)
     else:
-      self.__http = httplib.HTTPS(self.host, self.port)
+      self.__http = http.client.HTTPS(self.host, self.port)
 
   def close(self):
     self.__http.close()
@@ -140,18 +140,18 @@ class EMRTHttpClient(TTransportBase):
       user_agent = 'Python/EMRTHttpClient'
       script = os.path.basename(sys.argv[0])
       if script:
-        user_agent = '%s (%s)' % (user_agent, urllib.quote(script))
+        user_agent = '%s (%s)' % (user_agent, urllib.parse.quote(script))
       headers['User-Agent'] = user_agent
 
     if self.__custom_headers:
-      for key, val in self.__custom_headers.iteritems():
+      for key, val in self.__custom_headers.items():
         headers[key] = val
 
-    for k, v in headers.iteritems():
+    for k, v in headers.items():
       self.__http.putheader(k, v)
 
     for key, val in self.__auth_headers(headers, data,
-        self.support_account_key).iteritems():
+        self.support_account_key).items():
       self.__http.putheader(key, val)
 
     self.__http.endheaders()
@@ -184,10 +184,10 @@ class EMRTHttpClient(TTransportBase):
         auth_headers[CONTENT_MD5] = hashlib.md5(body).hexdigest()
 
         headers_to_sign = defaultdict(lambda :[])
-        for k, v in headers.iteritems():
+        for k, v in headers.items():
           headers_to_sign[str(k).lower()].append(v)
 
-        for k, v in auth_headers.iteritems():
+        for k, v in auth_headers.items():
           headers_to_sign[str(k).lower()].append(v)
 
         signature = base64.b64encode(self.sign(self.__form_sign_content("POST", self.uri,
@@ -228,7 +228,7 @@ class EMRTHttpClient(TTransportBase):
       return ""
 
     single_mapping_headers = dict()
-    for header, values in headers.iteritems():
+    for header, values in headers.items():
       str_ = str()
       if not str(header).lower().startswith("x-xiaomi"):
         continue
@@ -244,7 +244,7 @@ class EMRTHttpClient(TTransportBase):
     return result
 
   def __canonical_resource(self, uri):
-    parsed = urlparse.urlparse(uri)
+    parsed = urllib.parse.urlparse(uri)
     result = parsed.path
     if not parsed.query or not parsed.query:
       return result

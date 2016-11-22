@@ -9,7 +9,7 @@
 
 from thrift.Thrift import TType, TMessageType, TException, TApplicationException
 import sds.common.BaseService
-from ttypes import *
+from .ttypes import *
 from thrift.Thrift import TProcessor
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol, TProtocol
@@ -1600,7 +1600,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = saveAppInfo_result()
     try:
       self._handler.saveAppInfo(args.appInfo)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("saveAppInfo", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1614,7 +1614,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = getAppInfo_result()
     try:
       result.success = self._handler.getAppInfo(args.appId)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("getAppInfo", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1628,7 +1628,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = findAllApps_result()
     try:
       result.success = self._handler.findAllApps()
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("findAllApps", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1642,7 +1642,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = findAllTables_result()
     try:
       result.success = self._handler.findAllTables()
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("findAllTables", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1656,7 +1656,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = createTable_result()
     try:
       result.success = self._handler.createTable(args.tableName, args.tableSpec)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("createTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1670,7 +1670,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = dropTable_result()
     try:
       self._handler.dropTable(args.tableName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("dropTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1684,7 +1684,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = alterTable_result()
     try:
       self._handler.alterTable(args.tableName, args.tableSpec)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("alterTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1698,7 +1698,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = cloneTable_result()
     try:
       self._handler.cloneTable(args.srcName, args.destTable, args.flushTable)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("cloneTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1712,7 +1712,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = disableTable_result()
     try:
       self._handler.disableTable(args.tableName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("disableTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1726,7 +1726,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = enableTable_result()
     try:
       self._handler.enableTable(args.tableName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("enableTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1740,7 +1740,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = describeTable_result()
     try:
       result.success = self._handler.describeTable(args.tableName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("describeTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1754,7 +1754,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = getTableStatus_result()
     try:
       result.success = self._handler.getTableStatus(args.tableName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("getTableStatus", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1768,7 +1768,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = getTableState_result()
     try:
       result.success = self._handler.getTableState(args.tableName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("getTableState", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1782,7 +1782,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = getTableSplits_result()
     try:
       result.success = self._handler.getTableSplits(args.tableName, args.startKey, args.stopKey)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("getTableSplits", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1796,7 +1796,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = queryMetric_result()
     try:
       result.success = self._handler.queryMetric(args.query)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("queryMetric", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1810,7 +1810,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = queryMetrics_result()
     try:
       result.success = self._handler.queryMetrics(args.queries)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("queryMetrics", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1824,7 +1824,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = findAllAppInfo_result()
     try:
       result.success = self._handler.findAllAppInfo()
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("findAllAppInfo", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1838,7 +1838,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = getTableSize_result()
     try:
       result.success = self._handler.getTableSize(args.tableName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("getTableSize", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1852,7 +1852,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = putClientMetrics_result()
     try:
       self._handler.putClientMetrics(args.clientMetrics)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("putClientMetrics", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1866,7 +1866,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = subscribePhoneAlert_result()
     try:
       self._handler.subscribePhoneAlert(args.phoneNumber)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("subscribePhoneAlert", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1880,7 +1880,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = unsubscribePhoneAlert_result()
     try:
       self._handler.unsubscribePhoneAlert(args.phoneNumber)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("unsubscribePhoneAlert", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1894,7 +1894,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = subscribeEmailAlert_result()
     try:
       self._handler.subscribeEmailAlert(args.email)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("subscribeEmailAlert", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1908,7 +1908,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = unsubscribeEmailAlert_result()
     try:
       self._handler.unsubscribeEmailAlert(args.email)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("unsubscribeEmailAlert", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1922,7 +1922,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = listSubscribedPhone_result()
     try:
       result.success = self._handler.listSubscribedPhone()
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("listSubscribedPhone", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1936,7 +1936,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = listSubscribedEmail_result()
     try:
       result.success = self._handler.listSubscribedEmail()
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("listSubscribedEmail", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1950,7 +1950,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = getTableHistorySize_result()
     try:
       result.success = self._handler.getTableHistorySize(args.tableName, args.startDate, args.stopDate)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("getTableHistorySize", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1964,7 +1964,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = renameTable_result()
     try:
       self._handler.renameTable(args.srcName, args.destName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("renameTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1978,7 +1978,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = listSnapshots_result()
     try:
       result.success = self._handler.listSnapshots(args.tableName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("listSnapshots", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -1992,7 +1992,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = snapshotTable_result()
     try:
       self._handler.snapshotTable(args.tableName, args.snapshotName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("snapshotTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -2006,7 +2006,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = deleteSnapshot_result()
     try:
       self._handler.deleteSnapshot(args.tableName, args.snapshotName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("deleteSnapshot", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -2020,7 +2020,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = restoreSnapshot_result()
     try:
       self._handler.restoreSnapshot(args.tableName, args.snapshotName, args.destTableName, args.isSystem)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("restoreSnapshot", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -2034,7 +2034,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = listAllSnapshots_result()
     try:
       result.success = self._handler.listAllSnapshots()
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("listAllSnapshots", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -2048,7 +2048,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = cancelSnapshotTable_result()
     try:
       self._handler.cancelSnapshotTable(args.tableName, args.snapshotName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("cancelSnapshotTable", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -2062,7 +2062,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = getSnapshotState_result()
     try:
       result.success = self._handler.getSnapshotState(args.tableName, args.snapshotName)
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("getSnapshotState", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -2076,7 +2076,7 @@ class Processor(sds.common.BaseService.Processor, Iface, TProcessor):
     result = getQuotaInfo_result()
     try:
       result.success = self._handler.getQuotaInfo()
-    except sds.errors.ttypes.ServiceException, se:
+    except sds.errors.ttypes.ServiceException as se:
       result.se = se
     oprot.writeMessageBegin("getQuotaInfo", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -2143,7 +2143,7 @@ class saveAppInfo_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2209,7 +2209,7 @@ class saveAppInfo_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2274,7 +2274,7 @@ class getAppInfo_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2353,7 +2353,7 @@ class getAppInfo_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2399,7 +2399,7 @@ class findAllApps_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2437,7 +2437,7 @@ class findAllApps_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype51, _size48) = iprot.readListBegin()
-          for _i52 in xrange(_size48):
+          for _i52 in range(_size48):
             _elem53 = AppInfo()
             _elem53.read(iprot)
             self.success.append(_elem53)
@@ -2486,7 +2486,7 @@ class findAllApps_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2532,7 +2532,7 @@ class findAllTables_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2570,7 +2570,7 @@ class findAllTables_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype58, _size55) = iprot.readListBegin()
-          for _i59 in xrange(_size55):
+          for _i59 in range(_size55):
             _elem60 = sds.table.ttypes.TableInfo()
             _elem60.read(iprot)
             self.success.append(_elem60)
@@ -2619,7 +2619,7 @@ class findAllTables_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2698,7 +2698,7 @@ class createTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2777,7 +2777,7 @@ class createTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2842,7 +2842,7 @@ class dropTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2908,7 +2908,7 @@ class dropTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2987,7 +2987,7 @@ class alterTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3053,7 +3053,7 @@ class alterTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3144,7 +3144,7 @@ class cloneTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3210,7 +3210,7 @@ class cloneTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3275,7 +3275,7 @@ class disableTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3341,7 +3341,7 @@ class disableTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3406,7 +3406,7 @@ class enableTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3472,7 +3472,7 @@ class enableTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3537,7 +3537,7 @@ class describeTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3616,7 +3616,7 @@ class describeTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3681,7 +3681,7 @@ class getTableStatus_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3760,7 +3760,7 @@ class getTableStatus_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3825,7 +3825,7 @@ class getTableState_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3903,7 +3903,7 @@ class getTableState_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3950,7 +3950,7 @@ class getTableSplits_args(object):
         if ftype == TType.MAP:
           self.startKey = {}
           (_ktype63, _vtype64, _size62 ) = iprot.readMapBegin()
-          for _i66 in xrange(_size62):
+          for _i66 in range(_size62):
             _key67 = iprot.readString();
             _val68 = sds.table.ttypes.Datum()
             _val68.read(iprot)
@@ -3962,7 +3962,7 @@ class getTableSplits_args(object):
         if ftype == TType.MAP:
           self.stopKey = {}
           (_ktype70, _vtype71, _size69 ) = iprot.readMapBegin()
-          for _i73 in xrange(_size69):
+          for _i73 in range(_size69):
             _key74 = iprot.readString();
             _val75 = sds.table.ttypes.Datum()
             _val75.read(iprot)
@@ -3987,7 +3987,7 @@ class getTableSplits_args(object):
     if self.startKey is not None:
       oprot.writeFieldBegin('startKey', TType.MAP, 2)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.startKey))
-      for kiter76,viter77 in self.startKey.items():
+      for kiter76,viter77 in list(self.startKey.items()):
         oprot.writeString(kiter76)
         viter77.write(oprot)
       oprot.writeMapEnd()
@@ -3995,7 +3995,7 @@ class getTableSplits_args(object):
     if self.stopKey is not None:
       oprot.writeFieldBegin('stopKey', TType.MAP, 3)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.stopKey))
-      for kiter78,viter79 in self.stopKey.items():
+      for kiter78,viter79 in list(self.stopKey.items()):
         oprot.writeString(kiter78)
         viter79.write(oprot)
       oprot.writeMapEnd()
@@ -4016,7 +4016,7 @@ class getTableSplits_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4054,7 +4054,7 @@ class getTableSplits_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype83, _size80) = iprot.readListBegin()
-          for _i84 in xrange(_size80):
+          for _i84 in range(_size80):
             _elem85 = sds.table.ttypes.TableSplit()
             _elem85.read(iprot)
             self.success.append(_elem85)
@@ -4103,7 +4103,7 @@ class getTableSplits_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4169,7 +4169,7 @@ class queryMetric_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4248,7 +4248,7 @@ class queryMetric_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4284,7 +4284,7 @@ class queryMetrics_args(object):
         if ftype == TType.LIST:
           self.queries = []
           (_etype90, _size87) = iprot.readListBegin()
-          for _i91 in xrange(_size87):
+          for _i91 in range(_size87):
             _elem92 = MetricQueryRequest()
             _elem92.read(iprot)
             self.queries.append(_elem92)
@@ -4322,7 +4322,7 @@ class queryMetrics_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4360,7 +4360,7 @@ class queryMetrics_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype97, _size94) = iprot.readListBegin()
-          for _i98 in xrange(_size94):
+          for _i98 in range(_size94):
             _elem99 = TimeSeriesData()
             _elem99.read(iprot)
             self.success.append(_elem99)
@@ -4409,7 +4409,7 @@ class queryMetrics_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4455,7 +4455,7 @@ class findAllAppInfo_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4493,7 +4493,7 @@ class findAllAppInfo_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype104, _size101) = iprot.readListBegin()
-          for _i105 in xrange(_size101):
+          for _i105 in range(_size101):
             _elem106 = AppInfo()
             _elem106.read(iprot)
             self.success.append(_elem106)
@@ -4542,7 +4542,7 @@ class findAllAppInfo_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4607,7 +4607,7 @@ class getTableSize_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4685,7 +4685,7 @@ class getTableSize_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4751,7 +4751,7 @@ class putClientMetrics_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4817,7 +4817,7 @@ class putClientMetrics_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4882,7 +4882,7 @@ class subscribePhoneAlert_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -4948,7 +4948,7 @@ class subscribePhoneAlert_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5013,7 +5013,7 @@ class unsubscribePhoneAlert_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5079,7 +5079,7 @@ class unsubscribePhoneAlert_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5144,7 +5144,7 @@ class subscribeEmailAlert_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5210,7 +5210,7 @@ class subscribeEmailAlert_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5275,7 +5275,7 @@ class unsubscribeEmailAlert_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5341,7 +5341,7 @@ class unsubscribeEmailAlert_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5387,7 +5387,7 @@ class listSubscribedPhone_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5425,7 +5425,7 @@ class listSubscribedPhone_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype111, _size108) = iprot.readListBegin()
-          for _i112 in xrange(_size108):
+          for _i112 in range(_size108):
             _elem113 = iprot.readString();
             self.success.append(_elem113)
           iprot.readListEnd()
@@ -5473,7 +5473,7 @@ class listSubscribedPhone_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5519,7 +5519,7 @@ class listSubscribedEmail_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5557,7 +5557,7 @@ class listSubscribedEmail_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype118, _size115) = iprot.readListBegin()
-          for _i119 in xrange(_size115):
+          for _i119 in range(_size115):
             _elem120 = iprot.readString();
             self.success.append(_elem120)
           iprot.readListEnd()
@@ -5605,7 +5605,7 @@ class listSubscribedEmail_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5696,7 +5696,7 @@ class getTableHistorySize_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5734,7 +5734,7 @@ class getTableHistorySize_result(object):
         if ftype == TType.MAP:
           self.success = {}
           (_ktype123, _vtype124, _size122 ) = iprot.readMapBegin()
-          for _i126 in xrange(_size122):
+          for _i126 in range(_size122):
             _key127 = iprot.readI64();
             _val128 = iprot.readI64();
             self.success[_key127] = _val128
@@ -5760,7 +5760,7 @@ class getTableHistorySize_result(object):
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.MAP, 0)
       oprot.writeMapBegin(TType.I64, TType.I64, len(self.success))
-      for kiter129,viter130 in self.success.items():
+      for kiter129,viter130 in list(self.success.items()):
         oprot.writeI64(kiter129)
         oprot.writeI64(viter130)
       oprot.writeMapEnd()
@@ -5784,7 +5784,7 @@ class getTableHistorySize_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5862,7 +5862,7 @@ class renameTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5928,7 +5928,7 @@ class renameTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -5993,7 +5993,7 @@ class listSnapshots_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6072,7 +6072,7 @@ class listSnapshots_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6150,7 +6150,7 @@ class snapshotTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6216,7 +6216,7 @@ class snapshotTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6294,7 +6294,7 @@ class deleteSnapshot_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6360,7 +6360,7 @@ class deleteSnapshot_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6464,7 +6464,7 @@ class restoreSnapshot_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6530,7 +6530,7 @@ class restoreSnapshot_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6576,7 +6576,7 @@ class listAllSnapshots_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6614,7 +6614,7 @@ class listAllSnapshots_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype134, _size131) = iprot.readListBegin()
-          for _i135 in xrange(_size131):
+          for _i135 in range(_size131):
             _elem136 = SnapshotTableView()
             _elem136.read(iprot)
             self.success.append(_elem136)
@@ -6663,7 +6663,7 @@ class listAllSnapshots_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6741,7 +6741,7 @@ class cancelSnapshotTable_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6807,7 +6807,7 @@ class cancelSnapshotTable_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6885,7 +6885,7 @@ class getSnapshotState_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -6963,7 +6963,7 @@ class getSnapshotState_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -7009,7 +7009,7 @@ class getQuotaInfo_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -7088,7 +7088,7 @@ class getQuotaInfo_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

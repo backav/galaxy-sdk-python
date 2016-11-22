@@ -158,7 +158,7 @@ class QueueAttribute(object):
         if ftype == TType.MAP:
           self.userAttributes = {}
           (_ktype1, _vtype2, _size0 ) = iprot.readMapBegin()
-          for _i4 in xrange(_size0):
+          for _i4 in range(_size0):
             _key5 = iprot.readString();
             _val6 = iprot.readString();
             self.userAttributes[_key5] = _val6
@@ -206,7 +206,7 @@ class QueueAttribute(object):
     if self.userAttributes is not None:
       oprot.writeFieldBegin('userAttributes', TType.MAP, 8)
       oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.userAttributes))
-      for kiter7,viter8 in self.userAttributes.items():
+      for kiter7,viter8 in list(self.userAttributes.items()):
         oprot.writeString(kiter7)
         oprot.writeString(viter8)
       oprot.writeMapEnd()
@@ -232,7 +232,7 @@ class QueueAttribute(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -366,7 +366,7 @@ class QueueState(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -446,7 +446,7 @@ class Throughput(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -514,7 +514,7 @@ class QueueQuota(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -686,7 +686,7 @@ class CreateQueueRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -857,7 +857,7 @@ class CreateQueueResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -925,7 +925,7 @@ class DeleteQueueRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -993,7 +993,7 @@ class PurgeQueueRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1076,7 +1076,7 @@ class SetQueueAttributesRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1161,7 +1161,7 @@ class SetQueueAttributesResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1244,7 +1244,7 @@ class SetQueueQuotaRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1327,7 +1327,7 @@ class SetQueueQuotaResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1411,7 +1411,7 @@ class RedrivePolicy(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1479,7 +1479,7 @@ class GetQueueInfoRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1680,7 +1680,7 @@ class GetQueueInfoResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1763,7 +1763,7 @@ class SetQueueRedrivePolicyRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1846,7 +1846,7 @@ class SetQueueRedrivePolicyResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1913,7 +1913,7 @@ class RemoveQueueRedrivePolicyRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1980,7 +1980,7 @@ class ListDeadLetterSourceQueuesRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2026,7 +2026,7 @@ class ListDeadLetterSourceQueuesResponse(object):
         if ftype == TType.LIST:
           self.sourceQueues = []
           (_etype12, _size9) = iprot.readListBegin()
-          for _i13 in xrange(_size9):
+          for _i13 in range(_size9):
             _elem14 = iprot.readString();
             self.sourceQueues.append(_elem14)
           iprot.readListEnd()
@@ -2070,7 +2070,7 @@ class ListDeadLetterSourceQueuesResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2136,7 +2136,7 @@ class ListQueueRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2173,7 +2173,7 @@ class ListQueueResponse(object):
         if ftype == TType.LIST:
           self.queueName = []
           (_etype19, _size16) = iprot.readListBegin()
-          for _i20 in xrange(_size16):
+          for _i20 in range(_size16):
             _elem21 = iprot.readString();
             self.queueName.append(_elem21)
           iprot.readListEnd()
@@ -2212,7 +2212,7 @@ class ListQueueResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2309,7 +2309,7 @@ class SetPermissionRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2391,7 +2391,7 @@ class RevokePermissionRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2458,7 +2458,7 @@ class QueryPermissionRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2525,7 +2525,7 @@ class QueryPermissionResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2607,7 +2607,7 @@ class QueryPermissionForIdRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2674,7 +2674,7 @@ class QueryPermissionForIdResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2741,7 +2741,7 @@ class ListPermissionsRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2777,7 +2777,7 @@ class ListPermissionsResponse(object):
         if ftype == TType.MAP:
           self.permissionList = {}
           (_ktype24, _vtype25, _size23 ) = iprot.readMapBegin()
-          for _i27 in xrange(_size23):
+          for _i27 in range(_size23):
             _key28 = iprot.readString();
             _val29 = iprot.readI32();
             self.permissionList[_key28] = _val29
@@ -2797,7 +2797,7 @@ class ListPermissionsResponse(object):
     if self.permissionList is not None:
       oprot.writeFieldBegin('permissionList', TType.MAP, 1)
       oprot.writeMapBegin(TType.STRING, TType.I32, len(self.permissionList))
-      for kiter30,viter31 in self.permissionList.items():
+      for kiter30,viter31 in list(self.permissionList.items()):
         oprot.writeString(kiter30)
         oprot.writeI32(viter31)
       oprot.writeMapEnd()
@@ -2816,7 +2816,7 @@ class ListPermissionsResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2901,7 +2901,7 @@ class CreateTagRequest(object):
         if ftype == TType.MAP:
           self.userAttributes = {}
           (_ktype33, _vtype34, _size32 ) = iprot.readMapBegin()
-          for _i36 in xrange(_size32):
+          for _i36 in range(_size32):
             _key37 = iprot.readString();
             _val38 = iprot.readString();
             self.userAttributes[_key37] = _val38
@@ -2945,7 +2945,7 @@ class CreateTagRequest(object):
     if self.userAttributes is not None:
       oprot.writeFieldBegin('userAttributes', TType.MAP, 7)
       oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.userAttributes))
-      for kiter39,viter40 in self.userAttributes.items():
+      for kiter39,viter40 in list(self.userAttributes.items()):
         oprot.writeString(kiter39)
         oprot.writeString(viter40)
       oprot.writeMapEnd()
@@ -2974,7 +2974,7 @@ class CreateTagRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3084,7 +3084,7 @@ class CreateTagResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3166,7 +3166,7 @@ class DeleteTagRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3246,7 +3246,7 @@ class GetTagInfoRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3340,7 +3340,7 @@ class GetTagInfoResponse(object):
         if ftype == TType.MAP:
           self.userAttributes = {}
           (_ktype42, _vtype43, _size41 ) = iprot.readMapBegin()
-          for _i45 in xrange(_size41):
+          for _i45 in range(_size41):
             _key46 = iprot.readString();
             _val47 = iprot.readString();
             self.userAttributes[_key46] = _val47
@@ -3388,7 +3388,7 @@ class GetTagInfoResponse(object):
     if self.userAttributes is not None:
       oprot.writeFieldBegin('userAttributes', TType.MAP, 8)
       oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.userAttributes))
-      for kiter48,viter49 in self.userAttributes.items():
+      for kiter48,viter49 in list(self.userAttributes.items()):
         oprot.writeString(kiter48)
         oprot.writeString(viter49)
       oprot.writeMapEnd()
@@ -3420,7 +3420,7 @@ class GetTagInfoResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3487,7 +3487,7 @@ class ListTagRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3531,7 +3531,7 @@ class ListTagResponse(object):
         if ftype == TType.LIST:
           self.tagName = []
           (_etype53, _size50) = iprot.readListBegin()
-          for _i54 in xrange(_size50):
+          for _i54 in range(_size50):
             _elem55 = iprot.readString();
             self.tagName.append(_elem55)
           iprot.readListEnd()
@@ -3577,7 +3577,7 @@ class ListTagResponse(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3668,7 +3668,7 @@ class QueryMetricRequest(object):
         if ftype == TType.MAP:
           self.tags = {}
           (_ktype58, _vtype59, _size57 ) = iprot.readMapBegin()
-          for _i61 in xrange(_size57):
+          for _i61 in range(_size57):
             _key62 = iprot.readString();
             _val63 = iprot.readString();
             self.tags[_key62] = _val63
@@ -3729,7 +3729,7 @@ class QueryMetricRequest(object):
     if self.tags is not None:
       oprot.writeFieldBegin('tags', TType.MAP, 5)
       oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.tags))
-      for kiter64,viter65 in self.tags.items():
+      for kiter64,viter65 in list(self.tags.items()):
         oprot.writeString(kiter64)
         oprot.writeString(viter65)
       oprot.writeMapEnd()
@@ -3777,7 +3777,7 @@ class QueryMetricRequest(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -3826,7 +3826,7 @@ class TimeSeriesData(object):
         if ftype == TType.MAP:
           self.tags = {}
           (_ktype67, _vtype68, _size66 ) = iprot.readMapBegin()
-          for _i70 in xrange(_size66):
+          for _i70 in range(_size66):
             _key71 = iprot.readString();
             _val72 = iprot.readString();
             self.tags[_key71] = _val72
@@ -3837,7 +3837,7 @@ class TimeSeriesData(object):
         if ftype == TType.MAP:
           self.data = {}
           (_ktype74, _vtype75, _size73 ) = iprot.readMapBegin()
-          for _i77 in xrange(_size73):
+          for _i77 in range(_size73):
             _key78 = iprot.readI64();
             _val79 = iprot.readDouble();
             self.data[_key78] = _val79
@@ -3861,7 +3861,7 @@ class TimeSeriesData(object):
     if self.tags is not None:
       oprot.writeFieldBegin('tags', TType.MAP, 2)
       oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.tags))
-      for kiter80,viter81 in self.tags.items():
+      for kiter80,viter81 in list(self.tags.items()):
         oprot.writeString(kiter80)
         oprot.writeString(viter81)
       oprot.writeMapEnd()
@@ -3869,7 +3869,7 @@ class TimeSeriesData(object):
     if self.data is not None:
       oprot.writeFieldBegin('data', TType.MAP, 3)
       oprot.writeMapBegin(TType.I64, TType.DOUBLE, len(self.data))
-      for kiter82,viter83 in self.data.items():
+      for kiter82,viter83 in list(self.data.items()):
         oprot.writeI64(kiter82)
         oprot.writeDouble(viter83)
       oprot.writeMapEnd()
@@ -3890,7 +3890,7 @@ class TimeSeriesData(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

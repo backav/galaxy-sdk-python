@@ -26,7 +26,7 @@ maximum connections
 """
 import threading
 import socket
-import Queue
+import queue
 import select
 import struct
 
@@ -236,7 +236,7 @@ class TNonblockingServer:
         self.out_protocol = outputProtocolFactory or self.in_protocol
         self.threads = int(threads)
         self.clients = {}
-        self.tasks = Queue.Queue()
+        self.tasks = queue.Queue()
         self._read, self._write = socket.socketpair()
         self.prepared = False
         self._stop = False
@@ -252,7 +252,7 @@ class TNonblockingServer:
         if self.prepared:
             return
         self.socket.listen()
-        for _ in xrange(self.threads):
+        for _ in range(self.threads):
             thread = Worker(self.tasks)
             thread.setDaemon(True)
             thread.start()
@@ -290,7 +290,7 @@ class TNonblockingServer:
         """Does select on open connections."""
         readable = [self.socket.handle.fileno(), self._read.fileno()]
         writable = []
-        for i, connection in self.clients.items():
+        for i, connection in list(self.clients.items()):
             if connection.is_readable():
                 readable.append(connection.fileno())
             if connection.is_writeable():
@@ -332,7 +332,7 @@ class TNonblockingServer:
 
     def close(self):
         """Closes the server."""
-        for _ in xrange(self.threads):
+        for _ in range(self.threads):
             self.tasks.put([None, None, None, None, None])
         self.socket.close()
         self.prepared = False
