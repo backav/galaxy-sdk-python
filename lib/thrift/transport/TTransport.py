@@ -17,7 +17,7 @@
 # under the License.
 #
 
-from io import BytesIO
+from io import StringIO
 from struct import pack, unpack
 from thrift.Thrift import TException
 
@@ -138,8 +138,8 @@ class TBufferedTransport(TTransportBase, CReadableTransport):
 
     def __init__(self, trans, rbuf_size=DEFAULT_BUFFER):
         self.__trans = trans
-        self.__wbuf = BytesIO()
-        self.__rbuf = BytesIO(b"")
+        self.__wbuf = StringIO()
+        self.__rbuf = StringIO(b"")
         self.__rbuf_size = rbuf_size
 
     def isOpen(self):
@@ -156,7 +156,7 @@ class TBufferedTransport(TTransportBase, CReadableTransport):
         if len(ret) != 0:
             return ret
 
-        self.__rbuf = BytesIO(self.__trans.read(max(sz, self.__rbuf_size)))
+        self.__rbuf = StringIO(self.__trans.read(max(sz, self.__rbuf_size)))
         return self.__rbuf.read(sz)
 
     def write(self, buf):
@@ -165,7 +165,7 @@ class TBufferedTransport(TTransportBase, CReadableTransport):
     def flush(self):
         out = self.__wbuf.getvalue()
         # reset wbuf before write/flush to preserve state on underlying failure
-        self.__wbuf = BytesIO()
+        self.__wbuf = StringIO()
         self.__trans.write(out)
         self.__trans.flush()
 
@@ -184,7 +184,7 @@ class TBufferedTransport(TTransportBase, CReadableTransport):
         if len(retstring) < reqlen:
             retstring += self.__trans.readAll(reqlen - len(retstring))
 
-        self.__rbuf = BytesIO(retstring)
+        self.__rbuf = StringIO(retstring)
         return self.__rbuf
 
 
@@ -203,9 +203,9 @@ class TMemoryBuffer(TTransportBase, CReadableTransport):
         If value is set, this will be a transport for reading,
         otherwise, it is for writing"""
         if value is not None:
-            self._buffer = BytesIO(value)
+            self._buffer = StringIO(value)
         else:
-            self._buffer = BytesIO()
+            self._buffer = StringIO()
 
     def isOpen(self):
         return not self._buffer.closed
@@ -220,8 +220,8 @@ class TMemoryBuffer(TTransportBase, CReadableTransport):
         return self._buffer.read(sz)
 
     def write(self, buf):
-        if isinstance(buf, str):
-            buf = buf.encode('utf-8')
+        # if isinstance(buf, str):
+        #     buf = buf.encode('utf-8')
         self._buffer.write(buf)
 
     def flush(self):
@@ -253,8 +253,8 @@ class TFramedTransport(TTransportBase, CReadableTransport):
 
     def __init__(self, trans, ):
         self.__trans = trans
-        self.__rbuf = BytesIO()
-        self.__wbuf = BytesIO()
+        self.__rbuf = StringIO()
+        self.__wbuf = StringIO()
 
     def isOpen(self):
         return self.__trans.isOpen()
@@ -276,7 +276,7 @@ class TFramedTransport(TTransportBase, CReadableTransport):
     def readFrame(self):
         buff = self.__trans.readAll(4)
         sz, = unpack('!i', buff)
-        self.__rbuf = BytesIO(self.__trans.readAll(sz))
+        self.__rbuf = StringIO(self.__trans.readAll(sz))
 
     def write(self, buf):
         self.__wbuf.write(buf)
@@ -285,7 +285,7 @@ class TFramedTransport(TTransportBase, CReadableTransport):
         wout = self.__wbuf.getvalue()
         wsz = len(wout)
         # reset wbuf before write/flush to preserve state on underlying failure
-        self.__wbuf = BytesIO()
+        self.__wbuf = StringIO()
         # N.B.: Doing this string concatenation is WAY cheaper than making
         # two separate calls to the underlying socket object. Socket writes in
         # Python turn out to be REALLY expensive, but it seems to do a pretty
@@ -306,7 +306,7 @@ class TFramedTransport(TTransportBase, CReadableTransport):
         while len(prefix) < reqlen:
             self.readFrame()
             prefix += self.__rbuf.getvalue()
-        self.__rbuf = BytesIO(prefix)
+        self.__rbuf = StringIO(prefix)
         return self.__rbuf
 
 
@@ -360,8 +360,8 @@ class TSaslClientTransport(TTransportBase, CReadableTransport):
         self.transport = transport
         self.sasl = SASLClient(host, service, mechanism, **sasl_kwargs)
 
-        self.__wbuf = BytesIO()
-        self.__rbuf = BytesIO()
+        self.__wbuf = StringIO()
+        self.__rbuf = StringIO()
 
     def open(self):
         if not self.transport.isOpen():
@@ -406,7 +406,7 @@ class TSaslClientTransport(TTransportBase, CReadableTransport):
         encoded = self.sasl.wrap(data)
         self.transport.write(''.join((pack("!i", len(encoded)), encoded)))
         self.transport.flush()
-        self.__wbuf = BytesIO()
+        self.__wbuf = StringIO()
 
     def read(self, sz):
         ret = self.__rbuf.read(sz)
@@ -420,7 +420,7 @@ class TSaslClientTransport(TTransportBase, CReadableTransport):
         header = self.transport.readAll(4)
         length, = unpack('!i', header)
         encoded = self.transport.readAll(length)
-        self.__rbuf = BytesIO(self.sasl.unwrap(encoded))
+        self.__rbuf = StringIO(self.sasl.unwrap(encoded))
 
     def close(self):
         self.sasl.dispose()
@@ -438,5 +438,5 @@ class TSaslClientTransport(TTransportBase, CReadableTransport):
         while len(prefix) < reqlen:
             self._read_frame()
             prefix += self.__rbuf.getvalue()
-        self.__rbuf = BytesIO(prefix)
+        self.__rbuf = StringIO(prefix)
         return self.__rbuf
