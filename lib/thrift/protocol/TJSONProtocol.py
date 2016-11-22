@@ -173,7 +173,7 @@ class TJSONProtocolBase(TProtocolBase):
 
   def writeJSONString(self, string):
     self.context.write()
-    self.trans.write(json.dumps(string, ensure_ascii=False, encoding='utf8'))
+    self.trans.write(json.dumps(string, ensure_ascii=False))
 
   def writeJSONNumber(self, number):
     self.context.write()

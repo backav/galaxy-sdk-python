@@ -27,7 +27,7 @@ import urllib.parse
 import time
 import hashlib
 import hmac
-from io import StringIO
+from io import BytesIO
 
 from thrift.transport.TTransport import TTransportBase
 from thrift.transport.TTransport import TMemoryBuffer
@@ -62,16 +62,16 @@ class SdsTHttpClient(TTransportBase):
       self.path += '?%s' % parsed.query
     self.__timeout = timeout
     self.__protocol = thrift_protocol
-    self.__wbuf = StringIO()
+    self.__wbuf = BytesIO()
     self.__http = None
     self.__custom_headers = None
     self.__clock_offset = 0
 
   def open(self):
     if self.scheme == 'http':
-      self.__http = http.client.HTTP(self.host, self.port)
+      self.__http = http.client.HTTPConnection(self.host, self.port)
     else:
-      self.__http = http.client.HTTPS(self.host, self.port)
+      self.__http = http.client.HTTPSConnection(self.host, self.port)
 
   def close(self):
     self.__http.close()
@@ -93,7 +93,8 @@ class SdsTHttpClient(TTransportBase):
     self.__custom_headers = headers
 
   def read(self, sz):
-    return self.__http.file.read(sz)
+    return self.__response.read(sz)
+
 
   def write(self, buf):
     self.__wbuf.write(buf)
@@ -115,7 +116,7 @@ class SdsTHttpClient(TTransportBase):
 
     # Pull data out of buffer
     data = self.__wbuf.getvalue()
-    self.__wbuf = StringIO()
+    self.__wbuf = BytesIO()
 
     # HTTP request
     self.__http.putrequest('POST', self.path)
@@ -146,7 +147,9 @@ class SdsTHttpClient(TTransportBase):
     self.__http.send(data)
 
     # Get reply to flush the request
-    code, message, headers = self.__http.getreply()
+    res = self.__http.getresponse()
+    self.__response=res;
+    code, message, headers = res.status,res.reason,res.headers
     if code != 200:
       if code == HttpStatusCode.CLOCK_TOO_SKEWED:
         server_time = float(headers[HK_TIMESTAMP])
@@ -172,7 +175,7 @@ class SdsTHttpClient(TTransportBase):
     auth_header.signedHeaders = list(headers.keys())
     buf = "\n".join([headers[x] for x in auth_header.signedHeaders])
     auth_header.signature = \
-      hmac.new(self.credential.secretKey, buf, hashlib.sha1).hexdigest()
+      hmac.new(self.credential.secretKey.encode('utf-8'), buf.encode('utf-8'), hashlib.sha1).hexdigest()
 
     mb = TMemoryBuffer()
     protocol = TJSONProtocol(mb)
