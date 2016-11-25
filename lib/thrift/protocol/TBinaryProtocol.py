@@ -220,7 +220,7 @@ class TBinaryProtocol(TProtocolBase):
   def readString(self):
     len = self.readI32()
     str = self.trans.readAll(len)
-    return str
+    return str.decode('utf-8')
 
 
 class TBinaryProtocolFactory:
