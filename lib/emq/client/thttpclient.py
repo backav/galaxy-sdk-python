@@ -139,8 +139,8 @@ class THttpClient(TTransportBase):
         string_to_assign += '%s' % self.__canonicalize_xiaomi_headers(headers)
         string_to_assign += '%s' % self.__canonicalize_resource(self.path)
         signature = \
-            base64.encodestring(hmac.new(self.credential.secretKey.encode('utf-8'), string_to_assign.encode('utf-8'),
-                                         digestmod=sha1).digest()).strip()
+            base64.b64encode(hmac.new(self.credential.secretKey.encode('utf-8'), string_to_assign.encode('utf-8'),
+                                         digestmod=sha1).digest()).strip().decode("utf-8")
         auth_string = "Galaxy-V2 %s:%s" % (self.credential.secretKeyId, signature)
         headers[AUTHORIZATION] = auth_string
 

@@ -35,7 +35,7 @@ from sds.common.ttypes import ThriftProtocol
 
 endpoint = "http://cnbj-s0.sds.api.xiaomi.com"
 # Set your AppKey and AppSecret
-appKey = ""
+appKey = "5871752725166"
 appSecret = ""
 credential = Credential(UserType.APP_SECRET, appKey, appSecret)
 

@@ -12,7 +12,7 @@ README = load_file('README.md')
 
 setup(
     name='galaxy-sdk-python3',
-    version="0.2",
+    version="0.5",
     author='http://xiangyang.li',
     author_email='wo@xiangyang.li',
     url='http://xiangyang.li/project/galaxy-sdk-python',

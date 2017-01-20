@@ -11,8 +11,8 @@ from rpc.auth.ttypes import Credential, UserType
 
 
 # Please set your AppKey and AppSecret
-app_key = "" # Set your AppKey, like "5521728135794"
-app_secret = "" # Set your AppSecret, like "K7czwCuHttwZD49DD/qKzg==" 
+app_key = "5871752725166" # Set your AppKey, like "5521728135794"
+app_secret = "PWaqc+A/yt9U/JR0Us4w0g==" # Set your AppSecret, like "K7czwCuHttwZD49DD/qKzg=="
 
 print("\n== CREATE OPERATION ==")
 
